@@ -20,3 +20,4 @@ FROM base
 EXPOSE 8080
 COPY --from=build /opt/keycloak/ /opt/keycloak/
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
+CMD ["start", "--optimized"]
