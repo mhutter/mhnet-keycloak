@@ -1,4 +1,4 @@
-FROM quay.io/keycloak/keycloak:26.0.2 AS base
+FROM quay.io/keycloak/keycloak:26.0.4 AS base
 WORKDIR /opt/keycloak
 
 # Enable health and metrics support
