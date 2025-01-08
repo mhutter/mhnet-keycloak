@@ -6,10 +6,8 @@ on:
       - main
 
 jobs:
-  container:
+  tag:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -17,15 +15,12 @@ jobs:
       - name: Determine new tag name
         id: tag
         run: ./scripts/tag.sh
-
-      - name: Create Tag
-        uses: mathieudutour/github-tag-action@v6
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          custom_tag: ${{ steps.tag.outputs.name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
+          token: ${{ secrets.PAT }}
           tag: ${{ steps.tag.outputs.name }}
           generateReleaseNotes: true
