@@ -1,4 +1,4 @@
-FROM quay.io/keycloak/keycloak:26.1.1 AS base
+FROM quay.io/keycloak/keycloak:26.1.2 AS base
 
 # Enable health and metrics support
 ENV KC_HEALTH_ENABLED=true
